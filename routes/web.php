@@ -1,15 +1,10 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/movie', function () {
-    return view('movie.index', ['title' => 'Movie']);
-});
-
-Route::get('/movie/create', function () {
-    return view('movie.create', ['title' => 'Create Movie']);
-});
+Route::get('/movie',[MovieController::class,'index']);
+Route::get('/movie/create',[MovieController::class,'create']);
