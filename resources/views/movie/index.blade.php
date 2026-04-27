@@ -11,6 +11,7 @@
             <li class="list-group-item">
                 {{ $loop->iteration }}.{{ $movie->title }}
                 --{{ $movie->genre }}--{{ $movie->year }}--{{ $movie->director }}--{{ $movie->description }}
+                <a class="btn btn-warning btn-sm" href="{{ route('movie.edit', $movie) }}" role="button">edit</a>
             </li>
         @endforeach
 </x-app>

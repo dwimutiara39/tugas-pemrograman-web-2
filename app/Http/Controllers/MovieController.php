@@ -74,7 +74,10 @@ return to_route('movie.index')->withSuccess('Data Berhasil Ditambahkan');
      */
     public function edit(Movie $movie)
     {
-        //
+        return view('movie.edit', [
+            'title' => 'edit Movie',
+            'movie'=> $movie,
+            ]);
     }
 
     /**
@@ -82,7 +85,35 @@ return to_route('movie.index')->withSuccess('Data Berhasil Ditambahkan');
      */
     public function update(Request $request, Movie $movie)
     {
-        //
+        $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'genre' => 'required|string|max:100',
+        'year' => 'required|integer',
+        'director' => 'required|string|max:255',
+        'description' => 'required|string|max:255',
+    ], [
+        'title.required' => 'Judul wajib diisi!',
+        'title.string' => 'Judul harus berupa teks!',
+        'title.max' => 'Judul maksimal 255 karakter!',
+
+        'genre.required' => 'Genre wajib diisi!',
+        'genre.max' => 'Genre maksimal 100 karakter!',
+
+        'year.required' => 'Tahun wajib diisi!',
+        'year.integer' => 'Tahun harus berupa angka!',
+
+        'director.required' => 'Director wajib diisi!',
+        'director.max' => 'Director maksimal 255 karakter!',
+
+
+        'description.required' => 'Deskripsi wajib diisi!',
+        'description.max' => 'Deskripsi maksimal 255 karakter!',
+    ]);
+$movie->update($validated);
+return to_route('movie.index')->withSuccess('Data Berhasil Ditambahkan');
+
+    return redirect('/movie');
+    
     }
 
     /**
