@@ -121,6 +121,7 @@ return to_route('movie.index')->withSuccess('Data Berhasil Ditambahkan');
      */
     public function destroy(Movie $movie)
     {
-        //
+        $movie->delete($movie);
+return to_route('movie.index')->withSuccess('Data Berhasil Dihapus');
     }
 }

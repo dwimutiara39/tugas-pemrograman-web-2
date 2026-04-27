@@ -12,6 +12,17 @@
                 {{ $loop->iteration }}.{{ $movie->title }}
                 --{{ $movie->genre }}--{{ $movie->year }}--{{ $movie->director }}--{{ $movie->description }}
                 <a class="btn btn-warning btn-sm" href="{{ route('movie.edit', $movie) }}" role="button">edit</a>
+                <form action="{{ route('movie.destroy', $movie) }}" method="POST"class='d-inline'>
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger btm-sm"
+                        onclick="return confirm('Anda Yakin?')">Delete</button>
+
+
+
+
+
+                </form>
             </li>
         @endforeach
 </x-app>
