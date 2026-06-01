@@ -72,4 +72,11 @@ public function update(Request $request, Genre $genre)
         ->route('genre.index')
         ->with('success', 'Data berhasil diubah');
 }
+
+public function destroy(Genre $genre)
+{
+    $genre->delete();
+
+    return redirect()->route('genre.index');
+}
 }

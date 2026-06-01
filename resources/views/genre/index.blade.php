@@ -52,9 +52,22 @@
                 </div>
 
                 <div>
+                    {{-- Tombol Edit --}}
                     <a href="{{ route('genre.edit', $genre->id) }}" class="btn btn-warning btn-sm">
                         Edit
                     </a>
+
+                    {{-- Tombol Delete --}}
+                    <form action="{{ route('genre.destroy', $genre->id) }}" method="POST" class="d-inline"
+                        onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </form>
                 </div>
 
             </div>
