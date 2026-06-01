@@ -73,4 +73,14 @@ class CategoryController extends Controller
         ->route('category.index')
         ->with('success', 'Data berhasil dihapus');
 }
+
+public function show(Category $category)
+{
+    $category->load('movies');
+
+    return view('category.show', [
+        'title' => 'Detail Category',
+        'category' => $category
+    ]);
+}
 }

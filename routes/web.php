@@ -27,3 +27,6 @@ Route::put('/category/{category}', [CategoryController::class, 'update'])
 
     Route::delete('/category/{category}', [CategoryController::class, 'destroy'])
     ->name('category.destroy');
+
+    Route::get('/category/{category}', [CategoryController::class, 'show'])
+    ->name('category.show');
