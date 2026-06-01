@@ -10,14 +10,15 @@ class MovieController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        return view('movie.index', [
-            'title' => 'Movie',
-            'movies'=> Movie::all(),
-            ]);
-    }
+ public function index(Request $request)
+{
+    $movies = Movie::paginate(100);
 
+    return view('movie.index', [
+        'title' => 'Movie',
+        'movies' => $movies
+    ]);
+}
     /**
      * Show the form for creating a new resource.
      */
