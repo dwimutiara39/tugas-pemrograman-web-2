@@ -40,4 +40,26 @@ public function store(Request $request)
         ->route('category.index')
         ->with('success', 'Data berhasil ditambahkan');
 }
+public function edit(Category $category)
+{
+    return view('category.edit', [
+        'title' => 'Edit Category',
+        'category' => $category
+    ]);
+}
+
+public function update(Request $request, Category $category)
+{
+    $validated = $request->validate([
+        'name' => 'required',
+        'description' => 'required',
+        'status' => 'required',
+    ]);
+
+    $category->update($validated);
+
+    return redirect()
+        ->route('category.index')
+        ->with('success', 'Data berhasil diubah');
+}
 }

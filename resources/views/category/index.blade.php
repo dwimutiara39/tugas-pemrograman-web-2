@@ -4,22 +4,21 @@
     <form action="{{ route('category.index') }}" method="GET" class="mb-3">
         <div class="row">
             <div class="col-md-10">
-                <input type="text" name="search" class="form-control" placeholder="Search category name..."
+                <input type="text" name="search" class="form-control" placeholder="Cari kategori..."
                     value="{{ request('search') }}">
             </div>
 
             <div class="col-md-2">
                 <button type="submit" class="btn btn-success w-100">
-                    Search
+                    Cari
                 </button>
             </div>
         </div>
     </form>
 
-    <!-- Tombol Create -->
     <div class="mb-3">
         <a href="{{ route('category.create') }}" class="btn btn-primary">
-            Create Category
+            Tambah Kategori
         </a>
     </div>
 
@@ -32,6 +31,10 @@
                 {{ $category->description }}
                 --
                 {{ $category->status }}
+
+                <a href="{{ route('category.edit', $category) }}" class="btn btn-warning btn-sm float-end">
+                    Edit
+                </a>
             </div>
         @empty
             <div class="list-group-item">
