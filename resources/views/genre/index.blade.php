@@ -1,7 +1,7 @@
 <x-app>
     <x-slot:title>{{ $title }}</x-slot>
 
-    {{-- Tombol Create untuk Commit 8 --}}
+    {{-- Tombol Create --}}
     <div class="mb-3">
         <a href="{{ route('genre.create') }}" class="btn btn-primary">
             Create Genre
@@ -40,13 +40,23 @@
     {{-- Data Genre --}}
     <div class="list-group">
         @forelse($genres as $genre)
-            <div class="list-group-item">
-                {{ $loop->iteration }}.
-                {{ $genre->name }}
-                --
-                {{ $genre->status }}
-                --
-                {{ $genre->category->name }}
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+
+                <div>
+                    {{ $loop->iteration }}.
+                    {{ $genre->name }}
+                    --
+                    {{ $genre->status }}
+                    --
+                    {{ $genre->category->name }}
+                </div>
+
+                <div>
+                    <a href="{{ route('genre.edit', $genre->id) }}" class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+                </div>
+
             </div>
         @empty
             <div class="list-group-item">

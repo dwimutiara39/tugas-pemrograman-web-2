@@ -50,4 +50,26 @@ public function store(Request $request)
         ->route('genre.index')
         ->with('success', 'Data berhasil ditambahkan');
 }
+public function edit(Genre $genre)
+{
+    return view('genre.edit', [
+        'title' => 'Edit Genre',
+        'genre' => $genre,
+        'categories' => Category::all(),
+    ]);
+}
+public function update(Request $request, Genre $genre)
+{
+    $validated = $request->validate([
+        'name' => 'required',
+        'status' => 'required',
+        'category_id' => 'required',
+    ]);
+
+    $genre->update($validated);
+
+    return redirect()
+        ->route('genre.index')
+        ->with('success', 'Data berhasil diubah');
+}
 }
