@@ -16,6 +16,13 @@
         </div>
     </form>
 
+    <!-- Tombol Create -->
+    <div class="mb-3">
+        <a href="{{ route('category.create') }}" class="btn btn-primary">
+            Create Category
+        </a>
+    </div>
+
     <div class="list-group">
         @forelse($categories as $category)
             <div class="list-group-item">

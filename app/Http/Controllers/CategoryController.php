@@ -19,4 +19,25 @@ class CategoryController extends Controller
         'categories' => $categories,
     ]);
 }
+public function create()
+{
+    return view('category.create', [
+        'title' => 'Tambah Category'
+    ]);
+}
+
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'name' => 'required',
+        'description' => 'required',
+        'status' => 'required',
+    ]);
+
+    Category::create($validated);
+
+    return redirect()
+        ->route('category.index')
+        ->with('success', 'Data berhasil ditambahkan');
+}
 }
