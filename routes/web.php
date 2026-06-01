@@ -10,3 +10,8 @@ Route::post('/movie/store',[MovieController::class,'store'])->name('movie.store'
 Route::get('/movie/{movie}/edit',[MovieController::class,'edit'])->name('movie.edit');
 Route::put('/movie/{movie}',[MovieController::class,'update'])->name('movie.update');
 Route::delete('/movie/{movie}',[MovieController::class,'destroy'])->name('movie.destroy');
+use App\Http\Controllers\CategoryController;
+
+Route::get('/category', [CategoryController::class, 'index'])
+    ->name('category.index');
+    
