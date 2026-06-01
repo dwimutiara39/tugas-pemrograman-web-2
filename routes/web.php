@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
+   use App\Http\Controllers\GenreController;
 
 Route::get('/',[MovieController::class,'index']);
 Route::get('/movie',[MovieController::class,'index'])->name('movie.index');
@@ -30,3 +31,7 @@ Route::put('/category/{category}', [CategoryController::class, 'update'])
 
     Route::get('/category/{category}', [CategoryController::class, 'show'])
     ->name('category.show');
+
+ 
+
+Route::resource('genre', GenreController::class);
