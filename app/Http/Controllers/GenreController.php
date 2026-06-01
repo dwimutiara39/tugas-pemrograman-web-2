@@ -28,4 +28,26 @@ class GenreController extends Controller
             'categories' => Category::all(),
         ]);
     }
+public function create()
+{
+    return view('genre.create', [
+        'title' => 'Tambah Genre',
+        'categories' => Category::all(),
+    ]);
+}
+
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'name' => 'required',
+        'status' => 'required',
+        'category_id' => 'required',
+    ]);
+
+    Genre::create($validated);
+
+    return redirect()
+        ->route('genre.index')
+        ->with('success', 'Data berhasil ditambahkan');
+}
 }

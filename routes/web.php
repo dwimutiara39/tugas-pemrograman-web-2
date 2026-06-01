@@ -33,5 +33,6 @@ Route::put('/category/{category}', [CategoryController::class, 'update'])
     ->name('category.show');
 
  
-
+Route::get('/genre/create', [GenreController::class, 'create'])->name('genre.create');
+Route::post('/genre', [GenreController::class, 'store'])->name('genre.store');
 Route::resource('genre', GenreController::class);

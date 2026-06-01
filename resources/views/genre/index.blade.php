@@ -1,6 +1,14 @@
 <x-app>
     <x-slot:title>{{ $title }}</x-slot>
 
+    {{-- Tombol Create untuk Commit 8 --}}
+    <div class="mb-3">
+        <a href="{{ route('genre.create') }}" class="btn btn-primary">
+            Create Genre
+        </a>
+    </div>
+
+    {{-- Search dan Filter --}}
     <form action="{{ route('genre.index') }}" method="GET" class="mb-3">
         <div class="row">
             <div class="col-md-6">
@@ -29,6 +37,7 @@
         </div>
     </form>
 
+    {{-- Data Genre --}}
     <div class="list-group">
         @forelse($genres as $genre)
             <div class="list-group-item">
@@ -46,7 +55,9 @@
         @endforelse
     </div>
 
+    {{-- Pagination --}}
     <div class="mt-3">
         {{ $genres->withQueryString()->links() }}
     </div>
+
 </x-app>
