@@ -79,4 +79,12 @@ public function destroy(Genre $genre)
 
     return redirect()->route('genre.index');
 }
+
+public function show(Genre $genre)
+{
+    return view('genre.show', [
+        'title' => 'Detail Genre',
+        'genre' => $genre,
+    ]);
+}
 }

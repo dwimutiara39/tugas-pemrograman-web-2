@@ -52,6 +52,11 @@
                 </div>
 
                 <div>
+                    {{-- Tombol Detail --}}
+                    <a href="{{ route('genre.show', $genre->id) }}" class="btn btn-info btn-sm">
+                        Detail
+                    </a>
+
                     {{-- Tombol Edit --}}
                     <a href="{{ route('genre.edit', $genre->id) }}" class="btn btn-warning btn-sm">
                         Edit
