@@ -11,21 +11,24 @@
         </div>
 
         <div class="mb-3">
-            <label>Description</label>
+            <label>Deskripsi</label>
             <textarea name="description" class="form-control">{{ old('description', $category->description) }}</textarea>
         </div>
 
         <div class="mb-3">
             <label>Status</label>
-            <input type="text" name="status" class="form-control" value="{{ old('status', $category->status) }}">
+            <select name="status" class="form-control">
+                <option value="Aktif" {{ $category->status == 'Aktif' ? 'selected' : '' }}>
+                    Aktif
+                </option>
+                <option value="Tidak Aktif" {{ $category->status == 'Tidak Aktif' ? 'selected' : '' }}>
+                    Tidak Aktif
+                </option>
+            </select>
         </div>
 
         <button type="submit" class="btn btn-warning">
             Update Category
         </button>
-
-        <a href="{{ route('category.index') }}" class="btn btn-secondary">
-            Kembali
-        </a>
     </form>
 </x-app>

@@ -6,60 +6,63 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
-{public function index(Request $request)
 {
-    $search = $request->search;
+    public function index(Request $request)
+    {
+        $search = $request->search;
 
-    $categories = Category::when($search, function ($query) use ($search) {
-        $query->where('name', 'like', '%' . $search . '%');
-    })->paginate(5);
+        $categories = Category::when($search, function ($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        })->paginate(5);
 
-    return view('category.index', [
-        'title' => 'Data Category',
-        'categories' => $categories,
-    ]);
-}
-public function create()
-{
-    return view('category.create', [
-        'title' => 'Tambah Category'
-    ]);
-}
+        return view('category.index', [
+            'title' => 'Data Category',
+            'categories' => $categories,
+        ]);
+    }
 
-public function store(Request $request)
-{
-    $validated = $request->validate([
-        'name' => 'required',
-        'description' => 'required',
-        'status' => 'required',
-    ]);
+    public function create()
+    {
+        return view('category.create', [
+            'title' => 'Tambah Category'
+        ]);
+    }
 
-    Category::create($validated);
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'status' => 'required',
+        ]);
 
-    return redirect()
-        ->route('category.index')
-        ->with('success', 'Data berhasil ditambahkan');
-}
-public function edit(Category $category)
-{
-    return view('category.edit', [
-        'title' => 'Edit Category',
-        'category' => $category
-    ]);
-}
+        Category::create($validated);
 
-public function update(Request $request, Category $category)
-{
-    $validated = $request->validate([
-        'name' => 'required',
-        'description' => 'required',
-        'status' => 'required',
-    ]);
+        return redirect()
+            ->route('category.index')
+            ->with('success', 'Data berhasil ditambahkan');
+    }
 
-    $category->update($validated);
+    public function edit(Category $category)
+    {
+        return view('category.edit', [
+            'title' => 'Edit Category',
+            'category' => $category
+        ]);
+    }
 
-    return redirect()
-        ->route('category.index')
-        ->with('success', 'Data berhasil diubah');
-}
+    public function update(Request $request, Category $category)
+    {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'status' => 'required',
+        ]);
+
+        $category->update($validated);
+
+        return redirect()
+            ->route('category.index')
+            ->with('success', 'Data category berhasil diupdate');
+    }
 }

@@ -24,17 +24,23 @@
 
     <div class="list-group">
         @forelse($categories as $category)
-            <div class="list-group-item">
-                {{ $loop->iteration }}.
-                {{ $category->name }}
-                --
-                {{ $category->description }}
-                --
-                {{ $category->status }}
+            <div class="list-group-item d-flex justify-content-between align-items-center">
 
-                <a href="{{ route('category.edit', $category) }}" class="btn btn-warning btn-sm float-end">
-                    Edit
-                </a>
+                <div>
+                    {{ $loop->iteration }}.
+                    {{ $category->name }}
+                    --
+                    {{ $category->description }}
+                    --
+                    {{ $category->status }}
+                </div>
+
+                <div>
+                    <a href="{{ route('category.edit', $category->id) }}" class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+                </div>
+
             </div>
         @empty
             <div class="list-group-item">
@@ -46,4 +52,5 @@
     <div class="mt-3">
         {{ $categories->links() }}
     </div>
+
 </x-app>
