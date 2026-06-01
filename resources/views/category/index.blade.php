@@ -39,6 +39,16 @@
                     <a href="{{ route('category.edit', $category->id) }}" class="btn btn-warning btn-sm">
                         Edit
                     </a>
+
+                    <form action="{{ route('category.destroy', $category->id) }}" method="POST" class="d-inline"
+                        onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Hapus
+                        </button>
+                    </form>
                 </div>
 
             </div>
