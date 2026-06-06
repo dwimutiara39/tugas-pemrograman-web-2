@@ -22,6 +22,7 @@
 
                 <div>
 
+                    {{-- Tombol Restore --}}
                     <form action="{{ route('category.restore', $category->id) }}" method="POST" class="d-inline">
 
                         @csrf
@@ -29,6 +30,19 @@
 
                         <button class="btn btn-success btn-sm">
                             Restore
+                        </button>
+
+                    </form>
+
+                    {{-- Tombol Hapus Permanen --}}
+                    <form action="{{ route('category.forceDelete', $category->id) }}" method="POST" class="d-inline"
+                        onsubmit="return confirm('Data akan dihapus permanen. Yakin?')">
+
+                        @csrf
+                        @method('DELETE')
+
+                        <button class="btn btn-danger btn-sm">
+                            Hapus Permanen
                         </button>
 
                     </form>

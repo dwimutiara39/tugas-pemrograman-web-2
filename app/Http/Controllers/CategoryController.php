@@ -106,6 +106,16 @@ class CategoryController extends Controller
             ->with('error', 'Data gagal diupdate');
     }
 }
+public function forceDelete($id)
+{
+    Category::onlyTrashed()
+        ->findOrFail($id)
+        ->forceDelete();
+
+    return redirect()
+        ->route('category.trash')
+        ->with('success', 'Data berhasil dihapus permanen');
+}
 public function trash()
 {
     $categories = Category::onlyTrashed()->paginate(5);

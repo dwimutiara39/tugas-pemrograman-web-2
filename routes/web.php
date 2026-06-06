@@ -24,3 +24,4 @@ Route::post('/genre', [GenreController::class, 'store'])->name('genre.store');
 Route::resource('genre', GenreController::class);
 Route::get('/category-trash', [CategoryController::class, 'trash'])->name('category.trash');
 Route::put('/category/{id}/restore', [CategoryController::class, 'restore'])->name('category.restore');
+Route::delete('/category/{id}/force-delete', [CategoryController::class, 'forceDelete'])->name('category.forceDelete');
