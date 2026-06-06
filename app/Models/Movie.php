@@ -10,12 +10,11 @@ class Movie extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category_id',
-        'title',
-        'release_year',
-        'director',
-        'synopsis',
-    ];
+    'title',
+    'director',
+    'description',
+    'release_year',
+];
 
     public function category()
     {

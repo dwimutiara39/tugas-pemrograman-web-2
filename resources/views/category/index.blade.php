@@ -1,6 +1,12 @@
 <x-app>
     <x-slot:title>{{ $title }}</x-slot>
 
+    @session('success')
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endsession
+
     <form action="{{ route('category.index') }}" method="GET" class="mb-3">
         <div class="row">
             <div class="col-md-10">

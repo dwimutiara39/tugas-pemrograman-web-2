@@ -1,6 +1,12 @@
 <x-app>
     <x-slot:title>{{ $title }}</x-slot>
 
+    @session('success')
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endsession
+
     {{-- Tombol Create --}}
     <div class="mb-3">
         <a href="{{ route('genre.create') }}" class="btn btn-primary">

@@ -3,14 +3,13 @@
 namespace Database\Seeders;
 
 use App\Models\Movie;
-use App\Models\Category;
+
 use Illuminate\Database\Seeder;
 
 class MovieSeeder extends Seeder
 {
     public function run(): void
     {
-        $categories = Category::pluck('id')->toArray();
 
         $judul = [
             'Petualangan Nusantara',
@@ -40,11 +39,10 @@ class MovieSeeder extends Seeder
 
         for ($i = 1; $i <= 100; $i++) {
             Movie::create([
-                'category_id'  => $categories[array_rand($categories)],
                 'title'        => $judul[array_rand($judul)] . " " . $i,
                 'release_year' => rand(1990, 2025),
                 'director'     => fake('id_ID')->name(),
-                'synopsis'     => $sinopsis[array_rand($sinopsis)],
+                'description'     => $sinopsis[array_rand($sinopsis)],
             ]);
         }
     }

@@ -13,8 +13,9 @@ return new class extends Migration
             $table->string('title');
             $table->integer('release_year');
             $table->string('director');
-            $table->text('synopsis');
+            $table->text('description');
             $table->timestamps();
+
         });
     }
 

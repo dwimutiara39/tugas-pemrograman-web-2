@@ -13,7 +13,7 @@ class CategoryController extends Controller
 
         $categories = Category::when($search, function ($query) use ($search) {
             $query->where('name', 'like', '%' . $search . '%');
-        })->paginate(5);
+})->paginate(5);
 
         return view('category.index', [
             'title' => 'Data Category',
@@ -46,7 +46,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         return view('category.edit', [
-            'title' => 'Edit Category',
+            'title' => 'Edit Category nya',
             'category' => $category
         ]);
     }

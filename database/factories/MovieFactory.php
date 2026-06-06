@@ -40,8 +40,7 @@ class MovieFactory extends Factory
             'title' => fake()->randomElement($judul),
             'release_year' => fake()->numberBetween(1990, 2025),
             'director' => fake('id_ID')->name(),
-            'synopsis' => fake()->randomElement($sinopsis),
-                    'category_id' => Category::factory(),
+            'description' => fake()->randomElement($sinopsis),
         ];
     }
 }

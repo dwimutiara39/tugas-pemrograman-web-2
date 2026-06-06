@@ -13,7 +13,6 @@ class Genre extends Model
         'name',
         'description',
         'status',
-        'category_id',
     ];
 
     public function category()

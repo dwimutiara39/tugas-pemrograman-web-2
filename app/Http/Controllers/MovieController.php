@@ -10,12 +10,12 @@ class MovieController extends Controller
     /**
      * Display a listing of the resource.
      */
- public function index(Request $request)
+    public function index(Request $request)
 {
     $movies = Movie::paginate(100);
 
     return view('movie.index', [
-        'title' => 'Movie',
+        'title' => 'Movie movie',
         'movies' => $movies
     ]);
 }
@@ -27,17 +27,16 @@ class MovieController extends Controller
     return view('movie.create', ['title' => 'Create Movie']);
     }
 
-    /**
-     * Store a newly created resource in storage.
+    /**     * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         $validated = $request->validate([
         'title' => 'required|string|max:255',
-        'genre' => 'required|string|max:100',
-        'year' => 'required|integer',
         'director' => 'required|string|max:255',
         'description' => 'required|string|max:255',
+        'release_year' => 'required|int',
+
     ], [
         'title.required' => 'Judul wajib diisi!',
         'title.string' => 'Judul harus berupa teks!',
@@ -46,15 +45,16 @@ class MovieController extends Controller
         'genre.required' => 'Genre wajib diisi!',
         'genre.max' => 'Genre maksimal 100 karakter!',
 
-        'year.required' => 'Tahun wajib diisi!',
-        'year.integer' => 'Tahun harus berupa angka!',
-
         'director.required' => 'Director wajib diisi!',
         'director.max' => 'Director maksimal 255 karakter!',
 
 
         'description.required' => 'Deskripsi wajib diisi!',
         'description.max' => 'Deskripsi maksimal 255 karakter!',
+
+        'release_year.required' => 'Dtahun wajib angka!',
+        'release_year.max' => 'tahun wajib angka',
+
     ]);
 Movie::create($validated);
 return to_route('movie.index')->withSuccess('Data Berhasil Ditambahkan');
@@ -88,10 +88,9 @@ return to_route('movie.index')->withSuccess('Data Berhasil Ditambahkan');
     {
         $validated = $request->validate([
         'title' => 'required|string|max:255',
-        'genre' => 'required|string|max:100',
-        'year' => 'required|integer',
         'director' => 'required|string|max:255',
         'description' => 'required|string|max:255',
+        'release_year' => 'required|int',
     ], [
         'title.required' => 'Judul wajib diisi!',
         'title.string' => 'Judul harus berupa teks!',
@@ -100,18 +99,18 @@ return to_route('movie.index')->withSuccess('Data Berhasil Ditambahkan');
         'genre.required' => 'Genre wajib diisi!',
         'genre.max' => 'Genre maksimal 100 karakter!',
 
-        'year.required' => 'Tahun wajib diisi!',
-        'year.integer' => 'Tahun harus berupa angka!',
-
         'director.required' => 'Director wajib diisi!',
         'director.max' => 'Director maksimal 255 karakter!',
 
 
         'description.required' => 'Deskripsi wajib diisi!',
         'description.max' => 'Deskripsi maksimal 255 karakter!',
+
+        'release_year.required' => 'tahun wajib angka',
+        'release_year.max' => 'tahun wajib angka',
     ]);
 $movie->update($validated);
-return to_route('movie.index')->withSuccess('Data Berhasil Ditambahkan');
+return to_route('movie.index')->withSuccess('Data Berhasil Diubah');
 
     return redirect('/movie');
     

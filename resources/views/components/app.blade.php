@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MOVIE</title>
+    <title>MOVIE movie</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -27,7 +27,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('movie.index') }}">
-                            Movie
+                            Movie movie
                         </a>
                     </li>
 
@@ -39,7 +39,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('genre.index') }}">
-                            Genre
+                            Genrebbb
                         </a>
                     </li>
 

@@ -18,7 +18,8 @@
                 {{ $movie->title }}
                 -- {{ $movie->release_year }}
                 -- {{ $movie->director }}
-                -- {{ $movie->synopsis }}
+                -- {{ $movie->description }}
+
 
                 <a class="btn btn-warning btn-sm" href="{{ route('movie.edit', $movie) }}">
                     Edit
