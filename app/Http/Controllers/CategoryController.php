@@ -52,7 +52,7 @@ class CategoryController extends Controller
 
     } catch (\Exception $e) {
 
-        DB::rollBack();
+        DB::rollBack(); 
 
         return redirect()
             ->back()
@@ -77,19 +77,36 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'required',
-            'status' => 'required',
-            'email' => 'required|email'
-        ]);
+    $validated = $request->validate([
+        'name' => 'required|max:255',
+        'description' => 'required',
+        'status' => 'required',
+        'email' => 'required|email'
+    ]);
+
+    try {
+
+        DB::beginTransaction();
 
         $category->update($validated);
+
+        DB::commit();
 
         return redirect()
             ->route('category.index')
             ->with('success', 'Data category berhasil diupdate');
+
+    } catch (\Exception $e) {
+
+        DB::rollBack();
+
+        return redirect()
+            ->back()
+            ->withInput()
+            ->with('error', 'Data gagal diupdate');
     }
+}
+
     public function destroy(Category $category)
 {
     $category->delete();
