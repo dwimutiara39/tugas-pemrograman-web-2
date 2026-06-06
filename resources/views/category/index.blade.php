@@ -26,6 +26,10 @@
         <a href="{{ route('category.create') }}" class="btn btn-primary">
             Tambah Kategori
         </a>
+
+        <a href="{{ route('category.trash') }}" class="btn btn-danger mb-3">
+            Trash
+        </a>
     </div>
 
     <div class="list-group">

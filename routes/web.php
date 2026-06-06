@@ -22,3 +22,4 @@ Route::get('/category/{category}', [CategoryController::class, 'show'])->name('c
 Route::get('/genre/create', [GenreController::class, 'create'])->name('genre.create');
 Route::post('/genre', [GenreController::class, 'store'])->name('genre.store');
 Route::resource('genre', GenreController::class);
+Route::get('/category-trash', [CategoryController::class, 'trash'])->name('category.trash');

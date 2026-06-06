@@ -106,6 +106,15 @@ class CategoryController extends Controller
             ->with('error', 'Data gagal diupdate');
     }
 }
+public function trash()
+{
+    $categories = Category::onlyTrashed()->paginate(5);
+
+    return view('category.trash', [
+        'title' => 'Trash Category',
+        'categories' => $categories
+    ]);
+}
 
     public function destroy(Category $category)
 {
@@ -113,7 +122,7 @@ class CategoryController extends Controller
 
     return redirect()
         ->route('category.index')
-        ->with('success', 'Data berhasil dihapus');
+        ->with('success', 'Data berhasil dipindahkan ke trash');
 }
 
 public function show(Category $category)
