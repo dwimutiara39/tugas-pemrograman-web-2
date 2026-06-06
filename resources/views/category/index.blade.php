@@ -38,6 +38,8 @@
                     --
                     {{ $category->description }}
                     --
+                    {{ $category->email }}
+                    --
                     {{ $category->status }}
                 </div>
 

@@ -34,6 +34,7 @@ class CategoryController extends Controller
             'name' => 'required|max:255',
             'description' => 'required',
             'status' => 'required',
+            'email' => 'required|email'
         ]);
 
         Category::create($validated);
@@ -57,6 +58,7 @@ class CategoryController extends Controller
             'name' => 'required|max:255',
             'description' => 'required',
             'status' => 'required',
+            'email' => 'required|email'
         ]);
 
         $category->update($validated);
