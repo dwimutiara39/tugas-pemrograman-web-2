@@ -115,6 +115,16 @@ public function trash()
         'categories' => $categories
     ]);
 }
+public function restore($id)
+{
+    Category::onlyTrashed()
+        ->findOrFail($id)
+        ->restore();
+
+    return redirect()
+        ->route('category.trash')
+        ->with('success', 'Data berhasil direstore');
+}
 
     public function destroy(Category $category)
 {
