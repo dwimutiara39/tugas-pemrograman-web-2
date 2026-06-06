@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -36,6 +37,28 @@ class CategoryController extends Controller
             'status' => 'required',
             'email' => 'required|email'
         ]);
+
+        try {
+
+        DB::beginTransaction();
+
+        Category::create($validated);
+
+        DB::commit();
+
+        return redirect()
+            ->route('category.index')
+            ->with('success', 'Data berhasil ditambahkan');
+
+    } catch (\Exception $e) {
+
+        DB::rollBack();
+
+        return redirect()
+            ->back()
+            ->withInput()
+            ->with('error', 'Data gagal ditambahkan');
+    }
 
         Category::create($validated);
 
